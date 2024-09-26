@@ -10,8 +10,8 @@ PKG_VERSION:=1.2.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=tig-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=http://jonas.nitro.dk/tig/releases/
-PKG_MD5SUM:=9dec2966d3d51f7d8b5b8d4a4b8d93eb
+PKG_SOURCE_URL:=https://github.com/jonas/tig/archive/refs/tags/
+PKG_MD5SUM:=1cf29accd6a850c7621e5272d5186920
 PKG_CAT:=zcat
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tig-$(PKG_VERSION)
@@ -25,7 +25,7 @@ define Package/tig
 	CATEGORY:=Development
 	TITLE:=Console Git repository viewer
 	DEPENDS:=+git +libncursesw
-	URL:=http://jonas.nitro.dk/tig/releases/
+	URL:=https://github.com/jonas/tig/archive/refs/tags/
 endef
 
 define Package/tig/description
