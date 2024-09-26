@@ -1,17 +1,16 @@
-#
-# This is free software, licensed under the GNU General Public License v2.
+## This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
 
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openprinting-cups-filters
-PKG_VERSION:=1.0.37
+PKG_VERSION:=1.28.15
 PKG_RELEASE:=2
 
 PKG_SOURCE:=cups-filters-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=http://www.openprinting.org/download/cups-filters/
-PKG_MD5SUM:=210e5cb70e9474b91dd2ab4291a5e48e
+PKG_SOURCE_URL:=https://www.openprinting.org/download/cups-filters/
+PKG_MD5SUM:=b6891109445e147a38198d42c3127903
 PKG_BUILD_DIR:=$(BUILD_DIR)/cups-filters-$(PKG_VERSION)
 
 PKG_INSTALL:=1
@@ -24,8 +23,8 @@ define Package/openprinting-cups-filters
   SECTION:=Net
   CATEGORY:=Network
   TITLE:=OpenPrinting CUPS filters
-  DEPENDS:=+cups +libcupsimage +fontconfig +libijs +libtiff +libjpeg +libpng +poppler +qpdf +glib2
-  URL:=http://www.openprinting.org
+  DEPENDS:=+cups +libcupsimage +fontconfig +libijs +libtiff +libjpeg +libpng +poppler +qpdf +glib2 +poppler
+  URL:=https://www.openprinting.org
   SUBMENU:=Printing
 endef
 
@@ -57,6 +56,7 @@ define Package/openprinting-cups-filters/install
 	$(INSTALL_DIR) $(1)/usr/share/cups $(1)/usr/share/ppd/cupsfilters
 	$(CP) -r $(PKG_INSTALL_DIR)/usr/share/cups/* $(1)/usr/share/cups
 	$(CP) -r $(PKG_INSTALL_DIR)/usr/share/ppd/cupsfilters/* $(1)/usr/share/ppd/cupsfilters
+	$(CP) $(BUILD_DIR)/libs/* $(1)/usr/lib/
 endef
 
 define Build/InstallDev
