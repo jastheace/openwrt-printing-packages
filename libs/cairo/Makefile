@@ -43,7 +43,7 @@ CONFIGURE_ARGS += \
 	--enable-svg \
 	--enable-tee \
 	--enable-ft \
-	--enable-glesv3 \
+	--disable-glesv3 \
 	--enable-test-surfaces=no \
 	--enable-drm=no \
 	--enable-gallium=no \
