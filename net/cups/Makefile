@@ -28,7 +28,7 @@ define Package/cups
 $(call Package/cups/Default)
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+libcups +libcupsmime +libcupscgi +libcupsppdc +libcupsimage +libusb-1.0 +libstdcpp
+  DEPENDS:=+libcups +libcupsimage +libusb-1.0 +libstdcpp
   TITLE:=Common UNIX Printing System (daemon)
 endef
 
@@ -58,7 +58,7 @@ define Package/cups-client
 $(call Package/cups/Default)
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+libcups +libcupsimage +libcupsmime
+  DEPENDS:=+libcups +libcupsimage 
   TITLE:=Common UNIX Printing System - Client commands
 endef
 
@@ -86,7 +86,7 @@ define Package/cups-ppdc
 $(call Package/cups/Default)
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+libcupsppdc +libcups +libjpeg +libpng +libstdcpp +libz
+  DEPENDS:=+libcups +libjpeg +libpng +libstdcpp +zlib
   TITLE:=Common UNIX Printing System - PPDC utils
 endef
 
@@ -446,7 +446,7 @@ define Package/cups/install
 		$(PKG_INSTALL_DIR)/usr/lib/cups/filter/gziptoany \
 		$(1)/usr/lib/cups/filter
 	$(INSTALL_DIR) $(1)/usr/share/cups
-	#$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/* $(1)/usr/share/cups
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/* $(1)/usr/share/cups
 	$(INSTALL_DIR) $(1)/usr/share/cups/templates 
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/templates/*.tmpl \
 		$(1)/usr/share/cups/templates/
@@ -679,10 +679,10 @@ endef
 
 $(eval $(call BuildPackage,cups))
 $(eval $(call BuildPackage,libcups))
-# $(eval $(call BuildPackage,libcupscgi))
+#$(eval $(call BuildPackage,libcupscgi))
 $(eval $(call BuildPackage,libcupsimage))
-# $(eval $(call BuildPackage,libcupsmime))
-# $(eval $(call BuildPackage,libcupsppdc))
+#$(eval $(call BuildPackage,libcupsmime))
+#$(eval $(call BuildPackage,libcupsppdc))
 $(eval $(call BuildPackage,cups-bsd))
 $(eval $(call BuildPackage,cups-client))
 #$(eval $(call BuildPackage,cups-filters))
