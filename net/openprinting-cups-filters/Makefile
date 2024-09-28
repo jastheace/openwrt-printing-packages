@@ -56,7 +56,7 @@ define Package/openprinting-cups-filters/install
 	$(INSTALL_DIR) $(1)/usr/share/cups $(1)/usr/share/ppd/cupsfilters
 	$(CP) -r $(PKG_INSTALL_DIR)/usr/share/cups/* $(1)/usr/share/cups
 	$(CP) -r $(PKG_INSTALL_DIR)/usr/share/ppd/cupsfilters/* $(1)/usr/share/ppd/cupsfilters
-	$(CP) $(STAGING_DIR)/usr/lib/* $(1)/usr/lib/
+#	$(CP) $(STAGING_DIR)/usr/lib/* $(1)/usr/lib/
 endef
 
 define Build/InstallDev
