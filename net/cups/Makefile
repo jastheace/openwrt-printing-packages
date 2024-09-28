@@ -28,7 +28,7 @@ define Package/cups
 $(call Package/cups/Default)
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+libcups +libcupsimage +libusb-1.0 +libstdcpp
+  DEPENDS:=+libcups +libcupsimage +libusb-1.0 +libstdcpp +libopenldap
   TITLE:=Common UNIX Printing System (daemon)
 endef
 
