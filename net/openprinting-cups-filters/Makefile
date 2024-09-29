@@ -23,7 +23,7 @@ define Package/openprinting-cups-filters
   SECTION:=Net
   CATEGORY:=Network
   TITLE:=OpenPrinting CUPS filters
-  DEPENDS:=+cups +libcupsimage +fontconfig +libijs +libtiff +libjpeg +libpng +poppler +qpdf +glib2 +poppler
+  DEPENDS:=+cups +libcupsimage +fontconfig +libijs +libtiff +libjpeg +libpng +poppler +qpdf +glib2 +poppler +libdbus
   URL:=https://www.openprinting.org
   SUBMENU:=Printing
 endef
@@ -56,7 +56,6 @@ define Package/openprinting-cups-filters/install
 	$(INSTALL_DIR) $(1)/usr/share/cups $(1)/usr/share/ppd/cupsfilters
 	$(CP) -r $(PKG_INSTALL_DIR)/usr/share/cups/* $(1)/usr/share/cups
 	$(CP) -r $(PKG_INSTALL_DIR)/usr/share/ppd/cupsfilters/* $(1)/usr/share/ppd/cupsfilters
-#	$(CP) $(STAGING_DIR)/usr/lib/* $(1)/usr/lib/
 endef
 
 define Build/InstallDev
