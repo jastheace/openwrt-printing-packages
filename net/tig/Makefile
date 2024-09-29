@@ -14,7 +14,7 @@ PKG_SOURCE_URL:=https://github.com/jonas/tig/archive/refs/tags/
 PKG_MD5SUM:=1cf29accd6a850c7621e5272d5186920
 PKG_CAT:=zcat
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/tig-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/tig-tig-$(PKG_VERSION)
 PKG_BUILD_DEPENDS:=libncurses libiconv
 
 include $(INCLUDE_DIR)/package.mk
@@ -24,7 +24,7 @@ define Package/tig
 	SECTION:=devel
 	CATEGORY:=Development
 	TITLE:=Console Git repository viewer
-	DEPENDS:=+git +libncursesw
+	DEPENDS:=+git +libncurses
 	URL:=https://github.com/jonas/tig/archive/refs/tags/
 endef
 
