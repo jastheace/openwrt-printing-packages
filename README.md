@@ -17,6 +17,12 @@ Notably it has:
 
 ### To use this feed,
 
+- add this repository to /etc/opkg/customfeeds.conf to use a prebuilt package for aarch64_cortex-a53
+
+```
+src/gz printing https://raw.githubusercontent.com/jastheace/cups-aarch64_cortex-a53/refs/heads/main
+```
+
 - set up your router to use [external storage] for its root file
   system, as these packages require more than a 100 MB of space.
 
