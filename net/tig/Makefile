@@ -15,7 +15,7 @@ PKG_MD5SUM:=1cf29accd6a850c7621e5272d5186920
 PKG_CAT:=zcat
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tig-tig-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=libncurses libiconv
+PKG_BUILD_DEPENDS:=ncurses libiconv
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
