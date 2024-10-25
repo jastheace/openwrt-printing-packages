@@ -4,9 +4,9 @@ PKG_NAME:=cairo
 PKG_VERSION:=1.17.6
 PKG_RELEASE:=1
 
-PKG_SOURCE:=cairo-$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://gitlab.freedesktop.org/cairo/cairo/-/archive/$(PKG_VERSION)/
-PKG_HASH:=49f88d58cf4cf2252dbf0c7e7e42d62812f7aabdee4a0c0793d509a6ce1be266
+PKG_HASH:=a2227afc15e616657341c42af9830c937c3a6bfa63661074eabef13600e8936f
 
 PKG_MAINTAINER:=Daniel Golle <daniel@makrotopia.org>
 PKG_LICENSE:=LGPL-2.1-or-later MPL-1.1
