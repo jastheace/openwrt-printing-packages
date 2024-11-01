@@ -1,0 +1,30 @@
+--- a/filter/pdftoraster.cxx	2022-04-11 15:56:40.000000000 -0400
++++ b/filter/pdftoraster.cxx	2024-09-27 11:14:45.587134271 -0400
+@@ -39,7 +39,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #ifdef HAVE_CPP_POPPLER_VERSION_H
+-#include <poppler/cpp/poppler-version.h>
++#include <../../poppler-0.90.0/cpp/poppler-version.h>
+ #endif
+ #include <cups/ppd.h>
+ #include <stdarg.h>
+@@ -49,12 +49,12 @@
+ #include <cupsfilters/colormanager.h>
+ #include <strings.h>
+ #include <math.h>
+-#include <poppler/cpp/poppler-document.h>
+-#include <poppler/cpp/poppler-page.h>
+-#include <poppler/cpp/poppler-global.h>
+-#include <poppler/cpp/poppler-image.h>
+-#include <poppler/cpp/poppler-page-renderer.h>
+-#include <poppler/cpp/poppler-rectangle.h>
++#include <../../poppler-0.90.0/cpp/poppler-document.h>
++#include <../../poppler-0.90.0/cpp/poppler-page.h>
++#include <../../poppler-0.90.0/cpp/poppler-global.h>
++#include <../../poppler-0.90.0/cpp/poppler-image.h>
++#include <../../poppler-0.90.0/cpp/poppler-page-renderer.h>
++#include <../../poppler-0.90.0/cpp/poppler-rectangle.h>
+ #ifdef USE_LCMS1
+ #include <lcms.h>
+ #define cmsColorSpaceSignature icColorSpaceSignature

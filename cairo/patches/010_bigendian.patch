@@ -1,0 +1,40 @@
+*** a/build/aclocal.float.m4	2022-03-18 14:40:07.000000000 -0400
+--- b/build/aclocal.float.m4	2024-10-29 15:02:22.020678867 -0400
+***************
+*** 23,29 ****
+  # finds "seesnoon", float words are in little-endian order. If neither value
+  # is found, the user is instructed to specify the ordering.
+  
+! ax_cv_c_float_words_bigendian=unknown
+  AC_LINK_IFELSE([AC_LANG_SOURCE([[
+  
+  double d __attribute__((used)) = 90904234967036810337470478905505011476211692735615632014797120844053488865816695273723469097858056257517020191247487429516932130503560650002327564517570778480236724525140520121371739201496540132640109977779420565776568942592.0;
+--- 23,29 ----
+  # finds "seesnoon", float words are in little-endian order. If neither value
+  # is found, the user is instructed to specify the ordering.
+  
+! ax_cv_c_float_words_bigendian=no
+  AC_LINK_IFELSE([AC_LANG_SOURCE([[
+  
+  double d __attribute__((used)) = 90904234967036810337470478905505011476211692735615632014797120844053488865816695273723469097858056257517020191247487429516932130503560650002327564517570778480236724525140520121371739201496540132640109977779420565776568942592.0;
+***************
+*** 38,48 ****
+    ax_cv_c_float_words_bigendian=yes
+  fi
+  if $STRINGS -a conftest$ac_exeext | grep seesnoon >/dev/null ; then
+!   if test "$ax_cv_c_float_words_bigendian" = unknown; then
+!     ax_cv_c_float_words_bigendian=no
+!   else
+!     ax_cv_c_float_words_bigendian=unknown
+!   fi
+  fi
+  
+  ])])
+--- 38,44 ----
+    ax_cv_c_float_words_bigendian=yes
+  fi
+  if $STRINGS -a conftest$ac_exeext | grep seesnoon >/dev/null ; then
+!   ax_cv_c_float_words_bigendian=no
+  fi
+  
+  ])])

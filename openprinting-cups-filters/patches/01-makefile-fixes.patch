@@ -1,0 +1,63 @@
+--- a/Makefile.am	2022-04-11 15:56:40.000000000 -0400
++++ b/Makefile.am	2024-09-27 10:18:11.370043636 -0400
+@@ -524,13 +524,13 @@
+ 	filter/pdftopdf/qpdf_cm.cc \
+ 	filter/pdftopdf/qpdf_cm.h
+ pdftopdf_CFLAGS = \
+-	$(LIBQPDF_CFLAGS) \
++	$(subst -I/usr/include,,$(LIBQPDF_CFLAGS)) \
+ 	$(CUPS_CFLAGS)
+-pdftopdf_CXXFLAGS = -std=c++0x $(pdftopdf_CFLAGS)   # -std=c++11
++pdftopdf_CXXFLAGS = -std=c++17 $(pdftopdf_CFLAGS)   # -std=c++11
+ pdftopdf_LDADD = \
+	$(LIBQPDF_LIBS) \
+ 	$(CUPS_LIBS)
+ 
+ # ======================
+ # Simple filter binaries
+ # ======================
+@@ -626,7 +626,7 @@
+ 	$(CUPS_CFLAGS) \
+ 	$(LIBJPEG_CFLAGS) \
+ 	$(LIBPNG_CFLAGS) \
+-	$(LIBQPDF_CFLAGS) \
++	$(subst -I/usr/include,,$(LIBQPDF_CFLAGS)) \
+ 	$(TIFF_CFLAGS) \
+ 	$(FONTCONFIG_CFLAGS) \
+ 	-I$(srcdir)/fontembed/
+@@ -699,7 +699,7 @@
+ 	filter/pdf.h
+ gstoraster_CFLAGS = \
+ 	$(CUPS_CFLAGS) \
+-	$(LIBQPDF_CFLAGS) \
++	$(subst -I/usr/include,,$(LIBQPDF_CFLAGS)) \
+ 	-I$(srcdir)/cupsfilters/
+ gstoraster_LDADD = \
+ 	$(CUPS_LIBS) \
+@@ -743,7 +743,7 @@
+ 	filter/urftopdf.cpp \
+ 	filter/unirast.h
+ urftopdf_CXXFLAGS = \
+-	$(LIBQPDF_CFLAGS)
++	$(subst -I/usr/include,,$(LIBQPDF_CFLAGS)) 
+ urftopdf_LDADD = \
+ 	$(LIBQPDF_LIBS)
+ 
+@@ -752,7 +752,7 @@
+ rastertopdf_CXXFLAGS = \
+ 	$(CUPS_CFLAGS) \
+ 	$(LCMS_CFLAGS) \
+-	$(LIBQPDF_CFLAGS) \
++	$(subst -I/usr/include,,$(LIBQPDF_CFLAGS)) \
+ 	-I$(srcdir)/cupsfilters/
+ rastertopdf_LDADD = \
+ 	$(CUPS_LIBS) \
+@@ -804,7 +804,7 @@
+ EXTRA_pdftops_SOURCES = filter/strcasestr.c
+ pdftops_CFLAGS = \
+ 	$(CUPS_CFLAGS) \
+-	$(LIBQPDF_CFLAGS)
++	$(subst -I/usr/include,,$(LIBQPDF_CFLAGS)) 
+ pdftops_LDADD = \
+ 	$(STRCASESTR) \
+ 	$(CUPS_LIBS) \
