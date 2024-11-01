@@ -62,3 +62,4 @@ src/gz printing file:/storage/printer/packages
 
 - Avahi is notified of printers added to Cups, and these will appear as *Air Printer*'s in iOS devices.
 
+### opkg - https://github.com/jastheace/cups-aarch64_cortex-a53/tree/main
