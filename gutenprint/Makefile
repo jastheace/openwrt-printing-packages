@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=gutenprint
-PKG_VERSION:=5.3.4
-PKG_SUBVERSION:=2024-06-25T13-20-6665bfaa
+PKG_VERSION:=5.3.5
+PKG_SUBVERSION:=pre1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SUBVERSION).tar.xz
 PKG_SOURCE_URL:=@SF/gimp-print/
-PKG_MD5SUM:=4c446b98d8185adfc96b3ac3617190a4
+PKG_MD5SUM:=ffefd429ab3bee13f0e409f42f53ba7d
 PKG_BUILD_DEPENDS:=gutenprint/host cups ghostscript libiconv-full
 HOST_BUILD_DEPENDS:=libiconv-full/host
 
