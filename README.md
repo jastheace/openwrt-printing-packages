@@ -28,7 +28,7 @@ Notably it has:
 src/gz printing https://raw.githubusercontent.com/jastheace/cups-aarch64_cortex-a53/refs/heads/main
 ```
 
-- APK version for /etc/apk/repositories.d/customfeeds.list (replacement for OPK)
+- APK version for /etc/apk/repositories.d/customfeeds.list (replacement for OPKG)
 
 ```
 https://raw.githubusercontent.com/jastheace/cups-aarch64_cortex-a53/refs/heads/main/packages.adb
