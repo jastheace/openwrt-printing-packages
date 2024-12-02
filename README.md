@@ -28,6 +28,12 @@ Notably it has:
 src/gz printing https://raw.githubusercontent.com/jastheace/cups-aarch64_cortex-a53/refs/heads/main
 ```
 
+- APK version for /etc/apk/repositories.d/customfeeds.list (replacement for OPK)
+
+```
+https://raw.githubusercontent.com/jastheace/cups-aarch64_cortex-a53/refs/heads/main/packages.adb
+```
+
 - set up your router to use [external storage] for its root file
   system, as these packages require more than a 100 MB of space.
 
