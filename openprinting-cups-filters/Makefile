@@ -5,25 +5,25 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openprinting-cups-filters
-PKG_VERSION:=1.28.15
-PKG_RELEASE:=2
+PKG_VERSION:=1.28.17
+PKG_RELEASE:=5
 
 PKG_SOURCE:=cups-filters-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://www.openprinting.org/download/cups-filters/
-PKG_MD5SUM:=b6891109445e147a38198d42c3127903
+PKG_MD5SUM:=74741eb5ba32331676f88be468259d1f
 PKG_BUILD_DIR:=$(BUILD_DIR)/cups-filters-$(PKG_VERSION)
 
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 
-EXTRA_CFLAGS+=-DHAVE_CPP_POPPLER_VERSION_H
+EXTRA_CFLAGS+=-DHAVE_CPP_POPPLER_VERSION_H -Wno-deprecated-declarations -Wno-unused-functions
 
 define Package/openprinting-cups-filters
   SECTION:=Net
   CATEGORY:=Network
   TITLE:=OpenPrinting CUPS filters
-  DEPENDS:=+cups +fontconfig +libtiff +libjpeg +libpng +glib2 +libdbus +libexif +qpdf +poppler
+  DEPENDS:=+cups +fontconfig +libtiff +libjpeg +libpng +glib2 +libdbus +libexif +qpdf +poppler +libavahi-client
   URL:=https://www.openprinting.org
   SUBMENU:=Printing
 endef
@@ -36,16 +36,20 @@ endef
 define Build/Configure
 	$(call Build/Configure/Default, \
 	--enable-imagefilters \
-	--with-pdftops=gs \
-	--with-gs-path=/usr/bin/gs \
-	--with-pdftops-path=/usr/bin/gs \
-	--disable-gnutls \
-	--disable-openssl \
-	--disable-cdsassl \
-	--disable-ssl \
+	--enable-poppler \
+	--with-pdftops=pdftops \
+	--enable-pclm \
+	--enable-foomatic \
+	$(if $(CONFIG_PACKAGE_libdbus),--enable,--disable)-dbus \
+	--enable-driverless \
+	--disable-static \
 	--disable-gssapi \
-	--disable-avahi \
+	--enable-avahi \
+	--disable-ldap \
 	)
+#	--with-gs-path=/usr/bin/gs \
+#	--with-pdftops-path=/usr/bin/gs \
+
 endef
 
 define Package/openprinting-cups-filters/install

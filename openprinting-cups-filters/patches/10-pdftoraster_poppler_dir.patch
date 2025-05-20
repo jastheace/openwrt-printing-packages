@@ -5,7 +5,7 @@
  #include <stdlib.h>
  #ifdef HAVE_CPP_POPPLER_VERSION_H
 -#include <poppler/cpp/poppler-version.h>
-+#include <../../poppler-0.90.0/cpp/poppler-version.h>
++#include <../../poppler-25.05.0/cpp/poppler-version.h>
  #endif
  #include <cups/ppd.h>
  #include <stdarg.h>
@@ -19,12 +19,12 @@
 -#include <poppler/cpp/poppler-image.h>
 -#include <poppler/cpp/poppler-page-renderer.h>
 -#include <poppler/cpp/poppler-rectangle.h>
-+#include <../../poppler-0.90.0/cpp/poppler-document.h>
-+#include <../../poppler-0.90.0/cpp/poppler-page.h>
-+#include <../../poppler-0.90.0/cpp/poppler-global.h>
-+#include <../../poppler-0.90.0/cpp/poppler-image.h>
-+#include <../../poppler-0.90.0/cpp/poppler-page-renderer.h>
-+#include <../../poppler-0.90.0/cpp/poppler-rectangle.h>
++#include <../../poppler-25.05.0/cpp/poppler-document.h>
++#include <../../poppler-25.05.0/cpp/poppler-page.h>
++#include <../../poppler-25.05.0/cpp/poppler-global.h>
++#include <../../poppler-25.05.0/cpp/poppler-image.h>
++#include <../../poppler-25.05.0/cpp/poppler-page-renderer.h>
++#include <../../poppler-25.05.0/cpp/poppler-rectangle.h>
  #ifdef USE_LCMS1
  #include <lcms.h>
  #define cmsColorSpaceSignature icColorSpaceSignature
