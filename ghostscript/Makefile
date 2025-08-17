@@ -48,6 +48,11 @@ define Build/Configure
 	--without-x \
 	--with-jbig2dec \
 	--enable-cups \
+	--without-tesseract \
+	--with-libiconv=no \
+	--without-ijs \
+	--without-urf \
+	--without-so \
 	--with-fontpath /usr/share/fonts/ghostscript/fonts/:/usr/share/ghostscript/10.4.0/Resource/Font/:/usr/share/fonts/default/ghostscript/:/usr/share/fonts/default/TrueType/:/usr/share/fonts/default/Type1:/usr/share/cups/fonts/:/usr/share/fonts/:/usr/share/fonts/ubuntu/:/usr/share/fonts/truetype/liberation/ \
 	--with-cups-serverbin="/usr/lib/cups" \
 	--with-cups-serverroot="/etc/cups" \
@@ -74,6 +79,8 @@ define Host/Configure
 	--with-libiconv=no \
 	--disable-gtk \
 	--enable-cups \
+	--without-tesseract \
+	--without-ijs \
 	--without-libidn)
 endef
 

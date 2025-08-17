@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qpdf
-PKG_VERSION:=11.6.3
+PKG_VERSION:=11.10.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/qpdf/qpdf/releases/download/v$(PKG_VERSION)/$(PKG-SOURCE)
-PKG_MD5SUM:=83476f0def930a138bf80d88f51db1cd
+PKG_MD5SUM:=1ff2340ee610bd8d1e1296d3523c79c9
 
 CMAKE_INSTALL:=1
 
@@ -24,7 +24,7 @@ define Package/qpdf
   SECTION:=utils
   CATEGORY:=Utilities
   TITLE:=QPDF is a command-line program for transformations on PDF files.
-  DEPENDS:= +libpcre +zlib +libstdcpp +libatomic +libopenssl +libgnutls +libjpeg-turbo
+  DEPENDS:= +libpcre +zlib +libstdcpp +libatomic +libopenssl +libjpeg-turbo
   URL:=http://qpdf.sourceforge.net/
   SUBMENU:=Printing
 endef
@@ -38,7 +38,12 @@ about how they work.
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_DOC:BOOL=OFF
+	-DBUILD_DOC:BOOL=OFF \
+	-DBUILD_SHARED_LIBS:BOOL=ON \
+	-DBUILD_STATIC_LIBS:BOOL=OFF \
+	-DUSE_IMPLICIT_CRYPTO:BOOL=OFF \
+	-DALLOW_CRYPTO_NATIVE:BOOL=OFF \
+	-DREQUIRE_CRYPTO_OPENSSL:BOOL=ON
 
 define Package/qpdf/install
 	$(INSTALL_DIR) $(1)/usr/bin $(1)/usr/lib

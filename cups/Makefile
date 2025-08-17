@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cups
-PKG_VERSION:=2.4.11
+PKG_VERSION:=2.4.12
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-source.tar.gz
 PKG_SOURCE_URL:=https://github.com/OpenPrinting/cups/releases/download/v$(PKG_VERSION)/
-PKG_MD5SUM:=922ef8d3d40e5bf654277ee3d0ae3eba
+PKG_MD5SUM:=1f9281c661b95acc7925a220919210e2
 
 TARGET_LDFLAGS+=-Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 
@@ -28,7 +28,7 @@ define Package/cups
 $(call Package/cups/Default)
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+zlib +libusb-1.0 +libopenssl +libgnutls +libavahi-client +libavahi-dbus-support +libpng +libjpeg +libstdcpp #+libopenldap +libpam +libavahi-dbus-support
+  DEPENDS:=+zlib +libusb-1.0 +libopenssl +libavahi-client +libavahi-dbus-support +libpng +libjpeg +libstdcpp +libwrap #+libopenldap +libpam +libavahi-dbus-support
   TITLE:=Common UNIX Printing System (daemon)
   SUBMENU:=Printing
 endef
@@ -55,19 +55,30 @@ define Build/Configure
 		--enable-browsing \
 		--enable-webif \
 		--disable-acl \
-		--disable-dbus \
+		--enable-dbus \
 		--with-dnssd=avahi \
 		--disable-pam \
-		--enable-gnutls \
+		--disable-static \
+		--disable-gnutls \
 		--enable-openssl \
 		--disable-gssapi \
-		--with-tls=$(if $(LIBCUPS_OPENSSL),gnutls,openssl) \
 		UNAME="Linux" \
 		LIBS="$(TARGET_LDFLAGS) -lz -lpng -ljpeg" \
 	)
 endef
 
 CONFIGURE_ARGS+=
+MAKE_FLAGS = \
+        ARCH="$(LINUX_KARCH)" \
+        CROSS_COMPILE="$(TARGET_CROSS)" \
+        CC="$(TARGET_CC)" \
+        LD="$(TARGET_CROSS)ld" \
+        EXTRA_CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
+        LDFLAGS="$(TARGET_LDFLAGS)" \
+        KBUILD_HOSTCFLAGS="$(HOST_CFLAGS)" \
+        PKG_CONFIG="$(PKG_CONFIG)" \
+        PKG_CONFIG_PATH="$(PKG_CONFIG_PATH)"
+
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		$(TARGET_CONFIGURE_OPTS) \
@@ -132,6 +143,8 @@ define Package/cups/install
 		$(1)/usr/share/doc/cups/
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(CP) $(PKG_INSTALL_DIR)/usr/sbin/* $(1)/usr/sbin/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 
 	# overwrite default config with our own
 	$(CP) ./files/etc/cups/* $(1)/etc/cups/
